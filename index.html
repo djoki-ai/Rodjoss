@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pozivnica za 16. rođendan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 3em;
+    margin-bottom: 0.2em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  p {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 2em;
+  }
+  form {
+    background: rgba(255,255,255,0.1);
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    width: 300px;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    margin-bottom: 1.2em;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #f9a825;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #1e3c72;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #ffc107;
+  }
+  .footer {
+    position: absolute;
+    bottom: 15px;
+    font-size: 0.9em;
+    color: rgba(255,255,255,0.5);
+  }
+  /* Animacija pozadine */
+  @keyframes moveBg {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+  body {
+    background: linear-gradient(270deg, #1e3c72, #2a5298, #f9a825);
+    background-size: 600% 600%;
+    animation: moveBg 20s ease infinite;
+  }
+</style>
+</head>
+<body>
+
+<h1>Pozivam te na moj 16. rođendan</h1>
+<p>8. jun - Simple Kafić, Ćuprija</p>
+
+<form action="https://formspree.io/f/xnqrdyzo" method="POST">
+  <input type="text" name="ime" placeholder="Unesi svoje ime" required />
+  <button type="submit">Potvrdi dolazak</button>
+</form>
+
+<div class="footer">Kontakt: tvoj broj telefona</div>
+
+</body>
+</html>
