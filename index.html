@@ -5,116 +5,244 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pozivnica za 16. rođendan</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400&display=swap');
+
   body {
     margin: 0;
-    background: linear-gradient(270deg, #1e3c72, #2a5298, #f9a825);
-    background-size: 600% 600%;
-    animation: moveBg 20s ease infinite;
-    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #3a3a5c);
+    font-family: 'Roboto', sans-serif;
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    overflow-x: hidden;
   }
-  h1 {
-    font-size: 3em;
-    margin-bottom: 0.2em;
+
+  header {
+    text-align: center;
+    padding: 40px 20px 10px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    text-shadow: 0 0 8px #00b4d8;
   }
-  p {
-    font-size: 1.5em;
-    margin-top: 0;
-    margin-bottom: 2em;
+
+  .subheader {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    color: #00b4d8;
+    animation: glow 2.5s infinite alternate;
   }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #00b4d8, 0 0 20px #00b4d8;
+    }
+    to {
+      text-shadow: 0 0 20px #90e0ef, 0 0 30px #00b4d8;
+    }
+  }
+
+  .info {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    letter-spacing: 1.2px;
+  }
+
   form {
-    background: rgba(255,255,255,0.1);
-    padding: 20px 30px;
+    max-width: 400px;
+    margin: 0 auto 50px;
+    background: rgba(0, 180, 216, 0.15);
     border-radius: 12px;
-    box-shadow: 0 0 15px rgba(255,255,255,0.2);
-    width: 300px;
+    padding: 25px;
+    box-shadow: 0 0 20px #00b4d8;
   }
-  input[type="text"] {
-    width: 100%;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1em;
-    margin-bottom: 1.2em;
-    color: #333;
-  }
-  button {
-    width: 100%;
-    padding: 12px;
-    background: #f9a825;
-    border: none;
-    border-radius: 8px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
     font-weight: 700;
-    font-size: 1.1em;
-    color: #1e3c72;
+    letter-spacing: 1px;
+  }
+
+  input[type="text"], input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    outline: none;
+  }
+
+  button {
+    background: #00b4d8;
+    color: #fff;
+    font-weight: 700;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
     cursor: pointer;
+    font-size: 1.1rem;
     transition: background 0.3s ease;
   }
+
   button:hover {
-    background: #ffc107;
+    background: #0096c7;
   }
-  .footer {
+
+  .confirmation {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #90e0ef;
+    margin-top: 15px;
+    min-height: 24px;
+  }
+
+  footer {
+    text-align: center;
+    color: #00b4d8;
+    padding-bottom: 30px;
+    font-size: 0.9rem;
+  }
+
+  /* Animacije konfeta */
+  .confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+  }
+
+  .confetti-piece {
     position: absolute;
-    bottom: 15px;
-    font-size: 0.9em;
-    color: rgba(255,255,255,0.5);
+    width: 10px;
+    height: 10px;
+    background-color: #00b4d8;
+    opacity: 0.7;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
   }
-  @keyframes moveBg {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-10px) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
   }
 </style>
 </head>
 <body>
 
-<h1>Pozivam te na moj 16. rođendan</h1>
-<p>8. jun - Simple Kafić, Ćuprija</p>
+<header>Pozivam te na moj 16. rođendan!</header>
+<div class="subheader">8. jun - Simple Kafić, Ćuprija</div>
+<div class="info">Potvrdi dolazak ispod, da znam ko dolazi!</div>
 
-<form id="pozivnicaForm">
-  <input type="text" id="ime" placeholder="Unesi svoje ime" required />
+<form id="rsvpForm">
+  <label for="name">Ime:</label>
+  <input type="text" id="name" name="name" placeholder="Unesi svoje ime" required />
+  
+  <label for="phone">Telefon (opciono):</label>
+  <input type="tel" id="phone" name="phone" placeholder="Unesi broj telefona" />
+  
   <button type="submit">Potvrdi dolazak</button>
 </form>
 
-<div class="footer">Kontakt: tvoj broj telefona</div>
+<div class="confirmation" id="confirmation"></div>
+
+<audio id="birthdayAudio" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/21/audio_9e69a315fc.mp3?filename=happy-birthday-12324.mp3" type="audio/mpeg" />
+  Tvoj pregledač ne podržava audio.
+</audio>
+
+<div style="text-align:center; margin-bottom:30px;">
+  <button id="audioBtn" style="padding:10px 20px; font-size:16px; border:none; border-radius:8px; background:#00b4d8; color:#fff; cursor:pointer;">Pusti muziku</button>
+</div>
+
+<footer>Djoki te zove, vidimo se!</footer>
+
+<div class="confetti" id="confettiContainer"></div>
 
 <script>
-  const form = document.getElementById('pozivnicaForm');
+  // Potvrda dolaska i slanje na Discord webhook
+  const form = document.getElementById('rsvpForm');
+  const confirmation = document.getElementById('confirmation');
+  const webhookUrl = 'https://discord.com/api/webhooks/1315431137971277854/vJVB1CfaFYVBfCregkvAwhphpieq1B7cphxAUtt95p34tgt6y1qm-F29SQ-c2R5046IS';
+
   form.addEventListener('submit', e => {
     e.preventDefault();
-    const ime = document.getElementById('ime').value.trim();
-    if (!ime) {
-      alert('Unesi svoje ime!');
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    if (!name) {
+      confirmation.textContent = 'Molim te, unesi ime.';
       return;
     }
 
-    const webhookURL = 'https://discord.com/api/webhooks/1315431137971277854/vJVB1CfaFYVBfCregkvAwhphpieq1B7cphxAUtt95p34tgt6y1qm-F29SQ-c2R5046IS';
+    const data = {
+      content: `Dolazak potvrđen! Ime: **${name}**${phone ? ', Telefon: ' + phone : ''}`
+    };
 
-    fetch(webhookURL, {
+    fetch(webhookUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: `Potvrda dolaska: **${ime}**` })
-    })
-    .then(response => {
-      if (response.ok) {
-        alert('Hvala! Potvrda je poslata na Discord.');
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    }).then(res => {
+      if(res.ok){
+        confirmation.textContent = 'Hvala! Tvoj dolazak je zabeležen.';
         form.reset();
       } else {
-        alert('Došlo je do greške, pokušaj ponovo.');
+        confirmation.textContent = 'Greška pri slanju, probaj ponovo.';
       }
-    })
-    .catch(() => {
-      alert('Greška pri slanju. Proveri internet konekciju.');
+    }).catch(() => {
+      confirmation.textContent = 'Greška pri slanju, probaj ponovo.';
     });
   });
+
+  // Audio kontrola
+  const audio = document.getElementById('birthdayAudio');
+  const audioBtn = document.getElementById('audioBtn');
+  let playing = false;
+
+  audioBtn.addEventListener('click', () => {
+    if(!playing){
+      audio.play();
+      audioBtn.textContent = 'Pauziraj muziku';
+      playing = true;
+    } else {
+      audio.pause();
+      audioBtn.textContent = 'Pusti muziku';
+      playing = false;
+    }
+  });
+
+  // Konfete animacija
+  const confettiContainer = document.getElementById('confettiContainer');
+
+  function createConfettiPiece(){
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti-piece');
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    confetti.style.backgroundColor = `hsl(${Math.random() * 60 + 180}, 100%, 70%)`;
+    confetti.style.width = confetti.style.height = (Math.random() * 8 + 5) + 'px';
+    confettiContainer.appendChild(confetti);
+
+    setTimeout(() => {
+      confetti.remove();
+    }, 5000);
+  }
+
+  setInterval(createConfettiPiece, 150);
 </script>
 
 </body>
